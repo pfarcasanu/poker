@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/poker/static/css/main.edaaf7a2.css",
+    "main.js": "/poker/static/js/main.880aef5b.js",
+    "index.html": "/poker/index.html",
+    "main.edaaf7a2.css.map": "/poker/static/css/main.edaaf7a2.css.map",
+    "main.880aef5b.js.map": "/poker/static/js/main.880aef5b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.edaaf7a2.css",
+    "static/js/main.880aef5b.js"
+  ]
+}
