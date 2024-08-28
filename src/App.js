@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import Card from './card.js';
+import Deck from './deck.js';
+import './index.css';
 
-function App() {
+function Button({color, children}) {
+  return <button style={{backgroundColor: color, padding: 8, color: 'white'}}>
+    {children}</button>;
+}
+
+export default function App() {
+  let deck = new Deck();
+  let [correct, setState] = useState(null);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{padding: 10}}>
+        <div className="playingCards">
+            <ul className="hand">
+                <li><Card {...deck.draw()}/></li>
+                <li><Card {...deck.draw()}/></li>
+            </ul>
+        </div>
+        <ul>
+          <li><Button color="gray">Fold</Button></li>
+          <li><Button color="blue">Call</Button></li>
+          <li><Button color="green">Raise</Button></li>
+          {
+            correct === true ?
+            <li>✅</li> : correct === false ?
+            <li>❌</li> : null
+          }
+        </ul>
     </div>
   );
 }
-
-export default App;
