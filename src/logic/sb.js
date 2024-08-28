@@ -19,7 +19,7 @@ const table =
 
 function sortedPositions(card1, card2) {
     let pos1 = ranks.indexOf(card1.rank);
-    let pos2 = ranks.indexOf(card1.rank);
+    let pos2 = ranks.indexOf(card2.rank);
     if (pos1 < pos2) {
         return [pos1, pos2];
     }
