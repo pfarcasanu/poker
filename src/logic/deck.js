@@ -1,11 +1,13 @@
 let suits = ['hearts', 'diams', 'clubs', 'spades'];
-let ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'j', 'q', 'k', 'a'];
+let ranks = ['a', 'k', 'q', 'j', '10', '9', '8', '7', '6', '5', '4', '3', '2'];
 
 function shuffle(cards) {
     return cards.map(value => ({ value, sort: Math.random() }))
                 .sort((a, b) => a.sort - b.sort)
                 .map(({ value }) => value)
 }
+
+export {ranks};
 
 export default class Deck {
     cards = [];
