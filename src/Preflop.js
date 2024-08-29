@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Card from './Card.js';
 import Deck from './logic/deck.js';
+import { bestMove } from './logic/table.js';
 
 function deal() {
   let deck = new Deck();
@@ -18,7 +19,7 @@ function StatusIndicator({children}) {
   return <li style={{paddingTop: 5, marginLeft: 5}}>{children}</li>;
 }
 
-export default function Preflop({buttons, bestMove}) {
+export default function Preflop({table, buttons}) {
   let [cards, setCards] = useState(deal());
   let [success, setSuccess] = useState(null);
 
@@ -28,7 +29,7 @@ export default function Preflop({buttons, bestMove}) {
   }
 
   function onMove(move) {
-    if (move === bestMove(cards[0], cards[1])) {
+    if (move === bestMove(table, cards[0], cards[1])) {
       setSuccess(true);
       setTimeout(redeal, 1000);
       return;

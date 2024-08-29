@@ -17,9 +17,11 @@ export default function App() {
           <NavButton path="/button">Button</NavButton>
         </ul>
       </nav>
-      <Routes>
-        <Route path="/" element={<div />} />
-        <Route path="/smallblind" element={<div className="container"><SmallBlind /></div>} />
-      </Routes>
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<div />} />
+          <Route path="/smallblind" element={<SmallBlind />} />
+        </Routes>
+      </div>
     </HashRouter>
 }
