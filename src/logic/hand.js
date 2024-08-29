@@ -10,7 +10,6 @@ function symbolify(cards) {
       });
 }
 
-
 function won(hand, opp, table) {
   const hand1 = Hand.solve(symbolify([...hand, ...table]));
   const hand2 = Hand.solve(symbolify([...opp, ...table]));
