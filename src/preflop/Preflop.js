@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import Card from './Card.js';
-import Deck from './logic/deck.js';
-import { bestMove } from './logic/table.js';
+import Card from '../Card.js';
+import Deck from '../logic/deck.js';
+import { bestMove } from '../logic/table.js';
 
 function deal() {
   let deck = new Deck();
@@ -38,7 +38,7 @@ export default function Preflop({text, table, buttons}) {
   }
 
   return (
-    <div style={{minWidth: '12em'}}>
+    <div style={{minWidth: '15em'}}>
       <h3 className="title">{text}</h3>
       <div className="playingCards">
         <ul className="hand">

@@ -25,7 +25,7 @@ const buttons = [
 
 export default function Component() {
   return <Preflop
-            text="RFI (Button)"
+            text="Raise First In: Button"
             table={table}
             buttons={buttons}
           />;

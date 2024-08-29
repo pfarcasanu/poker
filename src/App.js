@@ -1,6 +1,6 @@
 import React from 'react';
-import RFIButton from './RFIButton.js';
-import RFISmallBlind from './RFISmallBlind.js';
+import Button from './preflop/Button.js';
+import SmallBlind from './preflop/SmallBlind.js';
 import { HashRouter, Routes, Route, Link } from "react-router-dom";
 import './styles/index.css';
 
@@ -14,15 +14,15 @@ export default function App() {
   return <HashRouter>
       <nav>
         <ul>
-          <NavButton path="/smallblind">RFI Small Blind</NavButton>
-          <NavButton path="/button">RFI Button</NavButton>
+          <NavButton path="/smallblind">Small Blind</NavButton>
+          <NavButton path="/button">Button</NavButton>
         </ul>
       </nav>
       <div className="container">
         <Routes>
-          <Route path="/" element={<RFISmallBlind />} />
-          <Route path="/smallblind" element={<RFISmallBlind />} />
-          <Route path="/button" element={<RFIButton />} />
+          <Route path="/" element={<SmallBlind />} />
+          <Route path="/smallblind" element={<SmallBlind />} />
+          <Route path="/button" element={<Button />} />
         </Routes>
       </div>
     </HashRouter>
