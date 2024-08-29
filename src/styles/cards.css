@@ -352,7 +352,7 @@
     line-height: 1;
 }
 .playingCards .card.rank-j .suit:after {
-    content: "\265F";
+    content: "\265D";
     right: .15em;
 }
 .playingCards .card.rank-q .suit:after {
