@@ -39,11 +39,15 @@ export default function SmallBlind() {
 
   return (
     <div style={{padding: 10}}>
-        <h2>Small Blind</h2>
         <div className="playingCards">
-            <ul className="hand">
-              <li><Card {...cards[0]} /></li>
-              <li><Card {...cards[1]} /></li>
+            <ul className="table">
+              {/* <li><Card {...cards[0]} /></li>
+              <li><Card {...cards[1]} /></li> */}
+              <li><Card {...{rank: '10', suit: 'hearts'}} /></li>
+              <li><Card {...{rank: '10', suit: 'spades'}} /></li>
+              <li><Card {...{rank: '10', suit: 'diams'}} /></li>
+              <li><Card {...{rank: '10', suit: 'clubs'}} /></li>
+              <li><Card {...{rank: 'a', suit: 'hearts'}} /></li>
             </ul>
         </div>
         <ul>

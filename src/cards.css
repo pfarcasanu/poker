@@ -214,7 +214,8 @@
     content: "\2666\00A0\2666\00A0\2666 \A\2666\00A0\2666\00A0\2666 \A\2666\00A0\2666\00A0\2666";
 }
 .playingCards .card.rank-10.diams .suit:after {
-    content: "\2666\00A0\2666\00A0\2666 \A\2666\00A0\2666\00A0\2666\00A0\2666 \A\2666\00A0\2666\00A0\2666";
+    /* content: "\2666\00A0\2666\00A0\2666 \A\2666\00A0\2666\00A0\2666\00A0\2666 \A\2666\00A0\2666\00A0\2666"; */
+    content: "\2666\00A0\2666\00A0\2666 \A\2666\00A0\2666\00A0\2666\00A0\2666";
 }
 
 /* hearts */
@@ -464,7 +465,7 @@
 }
 .playingCards ul.hand li:nth-child(1)  { left: 0; }
 .playingCards ul.hand li:nth-child(2)  { left: 3em; top: 1.5em }
-.playingCards ul.hand li:nth-child(3)  { left: 6em; }
+.playingCards ul.hand li:nth-child(3)  { left: 6em; top: 3em }
 .playingCards ul.hand li:nth-child(4)  { left: 9em; }
 .playingCards ul.hand li:nth-child(5)  { left: 4.4em; }
 .playingCards ul.hand li:nth-child(6)  { left: 5.5em; }
