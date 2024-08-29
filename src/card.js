@@ -1,5 +1,5 @@
 import React from 'react';
-import './cards.css';
+import './styles/cards.css';
 
 function Suit(suit) {
   if (suit === 'hearts') {

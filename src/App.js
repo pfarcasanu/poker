@@ -1,7 +1,8 @@
 import React from 'react';
+import Button from './Button.js';
 import SmallBlind from './SmallBlind.js';
 import { HashRouter, Routes, Route, Link } from "react-router-dom";
-import './index.css';
+import './styles/index.css';
 
 function NavButton({path, children}) {
   return <li><Link to={path}>
@@ -19,8 +20,9 @@ export default function App() {
       </nav>
       <div className="container">
         <Routes>
-          <Route path="/" element={<div />} />
+          <Route path="/" element={<SmallBlind />} />
           <Route path="/smallblind" element={<SmallBlind />} />
+          <Route path="/button" element={<Button />} />
         </Routes>
       </div>
     </HashRouter>

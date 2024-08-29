@@ -1,4 +1,5 @@
-import { ranks, sortedRankIndexes } from './deck.js';
+import React from 'react';
+import Preflop from './Preflop.js';
 
 const table =
 [
@@ -17,12 +18,11 @@ const table =
     [ 'r', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'r' ],
 ];
 
-function bestMove(card1, card2) {
-    let [pos1, pos2] = sortedRankIndexes(card1, card2);
-    if (card1.suit === card2.suit) {
-        return table[pos1][pos2];
-    }
-    return table[pos2][pos1];
-}
+const buttons = [
+  { short: 'f', long: 'fold', color: 'gray' },
+  { short: 'r', long: 'raise', color: 'red' },
+];
 
-export {bestMove};
+export default function SmallBlind() {
+  return <Preflop table={table} buttons={buttons} />;
+}
