@@ -1,16 +1,7 @@
-import { ranks } from './deck.js';
-
-function sortedRankIndexes(card1, card2) {
-    let pos1 = ranks.indexOf(card1.rank);
-    let pos2 = ranks.indexOf(card2.rank);
-    if (pos1 < pos2) {
-        return [pos1, pos2];
-    }
-    return [pos2, pos1];
-}
+import { getIndexes } from './deck.js';
 
 function bestMove(table, card1, card2) {
-    let [pos1, pos2] = sortedRankIndexes(card1, card2);
+    let [pos1, pos2] = getIndexes([card1, card2]).sort();
     if (card1.suit === card2.suit) {
         return table[pos1][pos2];
     }

@@ -2,6 +2,15 @@ let suits = ['hearts', 'diams', 'clubs', 'spades'];
 
 let ranks = ['a', 'k', 'q', 'j', '10', '9', '8', '7', '6', '5', '4', '3', '2'];
 
+function getIndexes(cards) {
+    let indexes = cards.map(card => ranks.indexOf(card.rank));
+    return Int8Array.from(indexes);
+}
+
+function getSuits(cards) {
+    return cards.map(card => card.suit);
+}
+
 function shuffle(cards) {
     return cards.map(value => ({ value, sort: Math.random() }))
                 .sort((a, b) => a.sort - b.sort)
@@ -25,4 +34,4 @@ export default class Deck {
     }
 }
 
-export { ranks };
+export { getIndexes, getSuits };
