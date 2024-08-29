@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from './preflop/Button.js';
 import SmallBlind from './preflop/SmallBlind.js';
+import Headsup from './Headsup.js';
 import { HashRouter, Routes, Route, Link } from "react-router-dom";
 import './styles/index.css';
 
@@ -16,6 +17,7 @@ export default function App() {
         <ul>
           <NavButton path="/smallblind">Small Blind</NavButton>
           <NavButton path="/button">Button</NavButton>
+          <NavButton path="/headsup">Heads Up</NavButton>
         </ul>
       </nav>
       <div className="container">
@@ -23,6 +25,7 @@ export default function App() {
           <Route path="/" element={<SmallBlind />} />
           <Route path="/smallblind" element={<SmallBlind />} />
           <Route path="/button" element={<Button />} />
+          <Route path="/headsup" element={<Headsup />} />
         </Routes>
       </div>
     </HashRouter>
