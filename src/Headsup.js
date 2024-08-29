@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { won } from './logic/hand.js';
 import Card from './Card.js';
 import Deck from './logic/deck.js';
 
@@ -17,26 +18,24 @@ export default function Headsup() {
 
   useEffect(() => {
     if (!done()) { return; }
-    if (folded) {
-        setMoney(money - bet);
-        setColor("red");
-    } else {
+    if (handWon()) {
         setMoney(money + 2 * bet);
         setColor("green");
+    } else {
+        setMoney(money - bet);
+        setColor("red");
     }
   }, [phase, folded]);
 
   function fold() {
-    console.log(" * fold");
-    if (phase === 3) {
+    if (done()) {
         return;
     }
     setFolded(true);
   }
 
   function limp() {
-    console.log(" * limp");
-    if (phase === 3) {
+    if (done()) {
         return;
     }
     setMoney(money - 1);
@@ -45,8 +44,7 @@ export default function Headsup() {
   }
 
   function raise() {
-    console.log(" * raise");
-    if (phase === 3) {
+    if (done()) {
         return;
     }
     setMoney(money - 5);
@@ -67,6 +65,14 @@ export default function Headsup() {
 
   function done() {
     return phase === 3 || folded;
+  }
+
+  function handWon() {
+    if (folded) { return false; }
+    let cards1 = cards.slice(5, 7);
+    let cards2 = cards.slice(7, 9);
+    let cards3 = cards.slice(0, 5);
+    return won(cards1, cards2, cards3);
   }
 
   return (
