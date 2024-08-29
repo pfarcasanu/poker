@@ -13,3 +13,15 @@ li {
     margin: 2px;
     float: left;
 }
+
+.title {
+    color: #fff;
+    font-family: 'Arial';
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+}

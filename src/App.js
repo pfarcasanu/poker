@@ -3,17 +3,23 @@ import SmallBlind from './SmallBlind.js';
 import { HashRouter, Routes, Route, Link } from "react-router-dom";
 import './index.css';
 
+function NavButton({path, children}) {
+  return <li><Link to={path}>
+      <button style={{fontSize: '1.2em'}}>{children}</button>
+    </Link></li>;
+}
+
 export default function App() {
   return <HashRouter>
       <nav>
         <ul>
-          <li><Link to="/sb"><button>Small Blind</button></Link></li>
-          <li><Link to="/button"><button>Button</button></Link></li>
+          <NavButton path="/smallblind">Small Blind</NavButton>
+          <NavButton path="/button">Button</NavButton>
         </ul>
       </nav>
       <Routes>
         <Route path="/" element={<div />} />
-        <Route path="/sb" element={<SmallBlind />} />
+        <Route path="/smallblind" element={<div className="container"><SmallBlind /></div>} />
       </Routes>
     </HashRouter>
 }
