@@ -25,8 +25,10 @@ const buttons = [
   { short: 'r', long: 'Raise', color: 'red' },
 ];
 
-export default function SmallBlind() {
-  return <Preflop text="Preflop (Small Blind)"
-                  table={table}
-                  buttons={buttons} />;
+export default function Component() {
+  return <Preflop
+            text="RFI (Small Blind)"
+            table={table}
+            buttons={buttons}
+          />;
 }
