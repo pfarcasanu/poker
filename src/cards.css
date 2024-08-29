@@ -162,16 +162,16 @@
     word-spacing: -.15em;
 }
 .playingCards .card.hearts.rank-10 .suit:after {
-    padding-top: 0.4em;
+    padding-top: 0.2em;
 }
 .playingCards .card.clubs.rank-10 .suit:after {
-    padding-top: 0.4em;
+    padding-top: 0.2em;
 }
 .playingCards .card.diams.rank-10 .suit:after {
-    padding-top: 0.4em;
+    padding-top: 0.2em;
 }
 .playingCards .card.spades.rank-10 .suit:after {
-    padding-top: 0.4em;
+    padding-top: 0.2em;
 }
 
 /* 8, 9, 10 are the most crowded */
@@ -214,8 +214,7 @@
     content: "\2666\00A0\2666\00A0\2666 \A\2666\00A0\2666\00A0\2666 \A\2666\00A0\2666\00A0\2666";
 }
 .playingCards .card.rank-10.diams .suit:after {
-    /* content: "\2666\00A0\2666\00A0\2666 \A\2666\00A0\2666\00A0\2666\00A0\2666 \A\2666\00A0\2666\00A0\2666"; */
-    content: "\2666\00A0\2666\00A0\2666 \A\2666\00A0\2666\00A0\2666\00A0\2666";
+    content: "\2666\00A0\2666\00A0\2666 \A\2666\00A0\2666\00A0\2666\00A0\2666 \A\2666\00A0\2666\00A0\2666";
 }
 
 /* hearts */

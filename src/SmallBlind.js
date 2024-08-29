@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import Card from './card.js';
+import Card from './Card.js';
 import Deck from './logic/deck.js';
 import {bestMove} from './logic/sb.js';
 
@@ -40,14 +40,9 @@ export default function SmallBlind() {
   return (
     <div style={{padding: 10}}>
         <div className="playingCards">
-            <ul className="table">
-              {/* <li><Card {...cards[0]} /></li>
-              <li><Card {...cards[1]} /></li> */}
-              <li><Card {...{rank: '10', suit: 'hearts'}} /></li>
-              <li><Card {...{rank: '10', suit: 'spades'}} /></li>
-              <li><Card {...{rank: '10', suit: 'diams'}} /></li>
-              <li><Card {...{rank: '10', suit: 'clubs'}} /></li>
-              <li><Card {...{rank: 'a', suit: 'hearts'}} /></li>
+            <ul className="hand">
+              <li><Card {...cards[0]} /></li>
+              <li><Card {...cards[1]} /></li>
             </ul>
         </div>
         <ul>

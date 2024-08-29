@@ -1,7 +1,7 @@
 import React from 'react';
 import './cards.css';
 
-function Suit({suit}) {
+function Suit(suit) {
   if (suit === 'hearts') {
     return <span className="suit">&hearts;</span>;
   } else if (suit === 'diams') {
@@ -17,11 +17,9 @@ export default function Card({suit, rank}) {
   let className = `card rank-${rank} ${suit}`;
   let rankName = rank.toUpperCase();
   return (
-    <>
-      <div className={className}>
-        <span className="rank">{rankName}</span>
-        <span className="suit">{Suit(suit)}</span>
-      </div>
-    </>
+    <div className={className}>
+      <span className="rank">{rankName}</span>
+      {Suit(suit)}
+    </div>
   );
 }
