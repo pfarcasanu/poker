@@ -3,13 +3,6 @@ import Card from '../Card.js';
 import Deck from '../logic/deck.js';
 import { bestMove } from '../logic/table.js';
 
-function deal() {
-  let deck = new Deck();
-  let card1 = deck.draw();
-  let card2 = deck.draw();
-  return [card1, card2];
-}
-
 function Button({color, children, onClick}) {
   let style = {backgroundColor: color, padding: 8, color: 'white'};
   return <button style={style} onClick={onClick}>{children}</button>;
@@ -20,11 +13,11 @@ function StatusIndicator({children}) {
 }
 
 export default function Preflop({text, table, buttons}) {
-  let [cards, setCards] = useState(deal());
+  let [cards, setCards] = useState(new Deck().deal(2));
   let [success, setSuccess] = useState(null);
 
   function redeal() {
-    setCards(deal());
+    setCards(new Deck().deal(2));
     setSuccess(null);
   }
 

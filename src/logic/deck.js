@@ -32,6 +32,10 @@ export default class Deck {
     draw() {
         return this.cards.pop();
     }
+
+    deal(count) {
+        return Array.from(Array(count).keys().map(() => this.draw()));
+    }
 }
 
 export { getIndexes, getSuits };

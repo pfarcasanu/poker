@@ -7,13 +7,8 @@ function Button({color, children, onClick, phase, disabled}) {
     return <button disabled={disabled} style={style} onClick={onClick}>{children}</button>;
 }
 
-function deal(deck, count) {
-    let iter = Array(count).keys().map(() => deck.draw());
-    return Array.from(iter);
-}
-
 export default function Headsup() {
-  let [cards, setCards] = useState(deal(new Deck(), 9));
+  let [cards, setCards] = useState(new Deck().deal(9));
   let [money, setMoney] = useState(99);
   let [bet, setBet] = useState(1);
   let [phase, setPhase] = useState(0);
@@ -66,7 +61,7 @@ export default function Headsup() {
     setBet(1);
     setPhase(0);
     setFolded(false);
-    setCards(deal(new Deck(), 9));
+    setCards(new Deck().deal(9));
     setColor("white");
   }
 
