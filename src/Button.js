@@ -19,10 +19,14 @@ const table =
 ];
 
 const buttons = [
-  { short: 'f', long: 'fold', color: 'gray' },
-  { short: 'r', long: 'raise', color: 'red' },
+  { short: 'f', long: 'Fold', color: 'gray' },
+  { short: 'r', long: 'Raise', color: 'red' },
 ];
 
 export default function SmallBlind() {
-  return <Preflop table={table} buttons={buttons} />;
+  return <Preflop
+            text="Preflop (Button)"
+            table={table}
+            buttons={buttons}
+          />;
 }

@@ -19,7 +19,7 @@ function StatusIndicator({children}) {
   return <li style={{paddingTop: 5, marginLeft: 5}}>{children}</li>;
 }
 
-export default function Preflop({table, buttons}) {
+export default function Preflop({text, table, buttons}) {
   let [cards, setCards] = useState(deal());
   let [success, setSuccess] = useState(null);
 
@@ -38,8 +38,8 @@ export default function Preflop({table, buttons}) {
   }
 
   return (
-    <div>
-      <h3 className="title">Preflop Small Blind</h3>
+    <div style={{minWidth: '12em'}}>
+      <h3 className="title">{text}</h3>
       <div className="playingCards">
         <ul className="hand">
           <li><Card {...cards[0]} /></li>
