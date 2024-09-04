@@ -4,3 +4,4 @@
 
 # Dev sources
  - https://selfthinker.github.io/CSS-Playing-Cards/
+ - https://github.com/bupticybee/TexasSolver/

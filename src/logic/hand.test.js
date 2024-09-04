@@ -1,4 +1,4 @@
-import { symbolify, won } from './hand.js';
+import { symbolify, result } from './hand.js';
 
 const _AsQh = [{rank: 'a', suit: 's'}, {rank: 'q', suit: 'h'}];
 const _KdKh = [{rank: 'k', suit: 'd'}, {rank: 'k', suit: 'h'}];
@@ -13,6 +13,7 @@ test('symbolify', () => {
 });
 
 test('won', () => {
-  expect(won(_AhJh, _KdKh, _Qd9h2s)).toBe(false);
-  expect(won(_AhJh, _KdKh, _10h9h2h)).toBe(true);
+  expect(result(_AhJh, _KdKh, _Qd9h2s)).toBe(-1);
+  expect(result(_AhJh, _KdKh, _10h9h2h)).toBe(1);
+  expect(result(_AhJh, _AhJh, _10h9h2h)).toBe(0);
 });

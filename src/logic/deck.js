@@ -34,7 +34,8 @@ export default class Deck {
     }
 
     deal(count) {
-        return Array.from(Array(count).keys().map(() => this.draw()));
+        let range = Array.from(Array(count).keys());
+        return range.map(() => this.draw());
     }
 }
 

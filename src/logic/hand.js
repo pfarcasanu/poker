@@ -10,10 +10,14 @@ function symbolify(cards) {
       });
 }
 
-function won(hand, opp, table) {
+function result(hand, opp, table) {
   const hand1 = Hand.solve(symbolify([...hand, ...table]));
   const hand2 = Hand.solve(symbolify([...opp, ...table]));
-  return Hand.winners([hand1, hand2])[0] == hand1;
+  const winners = Hand.winners([hand1, hand2]);
+  if (winners.length === 2) {
+    return 0;
+  }
+  return winners[0] === hand1 ? 1 : -1;
 }
 
-export { symbolify, won };
+export { symbolify, result };
