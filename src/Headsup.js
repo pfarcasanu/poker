@@ -67,7 +67,7 @@ export default function Headsup() {
   }
 
   function done() {
-    return phase === 3 || folded;
+    return phase === 4 || folded;
   }
 
   function getResult() {
@@ -83,11 +83,11 @@ export default function Headsup() {
       <h3 className="title">Heads Up</h3>
       <div className="playingCards">
         <ul className="table">
-          <li><Card {...cards[0]} /></li>
-          <li><Card {...cards[1]} /></li>
-          <li><Card {...cards[2]} /></li>
-          {phase >= 1 ? <li><Card {...cards[3]} /></li> : null}
-          {phase >= 2 ? <li><Card {...cards[4]} /></li> : null}
+          {phase >= 1 ? <li><Card {...cards[0]} /></li> : <li><div className="card back">*</div></li>}
+          {phase >= 1 ? <li><Card {...cards[1]} /></li> : <li><div className="card back">*</div></li>}
+          {phase >= 1 ? <li><Card {...cards[2]} /></li> : <li><div className="card back">*</div></li>}
+          {phase >= 2 ? <li><Card {...cards[3]} /></li> : null}
+          {phase >= 3 ? <li><Card {...cards[4]} /></li> : null}
         </ul>
       </div>
       <div className="playingCards">
@@ -95,10 +95,10 @@ export default function Headsup() {
           <li><Card {...cards[5]} /></li>
           <li><Card {...cards[6]} /></li>
           {
-            done() ? <li><Card {...cards[7]} /></li> : <li><div className="card back">*</div></li>
+            phase === 4 ? <li><Card {...cards[7]} /></li> : <li><div className="card back">*</div></li>
           }
           {
-            done() ? <li><Card {...cards[8]} /></li> : <li><div className="card back">*</div></li>
+            phase === 4 ? <li><Card {...cards[8]} /></li> : <li><div className="card back">*</div></li>
           }
         </ul>
       </div>
