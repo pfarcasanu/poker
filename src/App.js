@@ -22,7 +22,7 @@ export default function App() {
       </nav>
       <div className="container">
         <Routes>
-          <Route path="/" element={<SmallBlind />} />
+          <Route path="/" element={<Headsup />} />
           <Route path="/smallblind" element={<SmallBlind />} />
           <Route path="/button" element={<Button />} />
           <Route path="/headsup" element={<Headsup />} />
