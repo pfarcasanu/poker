@@ -10,7 +10,7 @@ function Button({color, children, onClick, phase, disabled}) {
 
 export default function Headsup() {
   let [cards, setCards] = useState(new Deck().deal(9));
-  let [money, setMoney] = useState(99);
+  let [money, setMoney] = useState(100);
   let [bet, setBet] = useState(1);
   let [phase, setPhase] = useState(0);
   let [folded, setFolded] = useState(false);
@@ -43,7 +43,6 @@ export default function Headsup() {
     if (done()) {
         return;
     }
-    setMoney(money - 1);
     setBet(bet + 1);
     setPhase(phase + 1);
   }
@@ -52,7 +51,6 @@ export default function Headsup() {
     if (done()) {
         return;
     }
-    setMoney(money - 5);
     setBet(bet + 5);
     setPhase(phase + 1);
   }
@@ -102,7 +100,7 @@ export default function Headsup() {
           {phase >= 3 ? <li><Card {...cards[4]} /></li> : null}
         </ul>
       </div>
-      <div className="playingCards">
+      <div className="playingCards" style={{marginTop: "-0.5em"}}>
         <ul className="hand">
           <li><Card {...cards[5]} /></li>
           <li><Card {...cards[6]} /></li>
@@ -122,7 +120,7 @@ export default function Headsup() {
         <li><Button color="green" onClick={limp} disabled={done()}>Limp</Button></li>
         <li><Button color="red" onClick={raise} disabled={done()}>Raise</Button></li>
         <li><Button color="gray" onClick={next} disabled={!done()}>Next</Button></li>
-        <li style={{color: color, marginTop: "-1em", paddingLeft: '1em'}}>
+        <li style={{color: color, marginTop: "-1em", paddingLeft: '3em'}}>
             <h2>${bet} | ${money}</h2>
         </li>
       </ul>

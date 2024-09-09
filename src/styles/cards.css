@@ -465,9 +465,9 @@
     bottom: 0;
 }
 .playingCards ul.hand li:nth-child(1)  { left: 0; }
-.playingCards ul.hand li:nth-child(2)  { left: 2.5em; top: 1.5em }
+.playingCards ul.hand li:nth-child(2)  { left: 2.8em; top: 1.65em }
 .playingCards ul.hand li:nth-child(3)  { left: 12em; }
-.playingCards ul.hand li:nth-child(4)  { left: 14.5em; top: 1.5em }
+.playingCards ul.hand li:nth-child(4)  { left: 14.8em; top: 1.65em }
 
 /* rotate cards if rotateHand option is on */
 .playingCards.rotateHand ul.hand li:nth-child(1) {
@@ -519,7 +519,7 @@
 
 
 .playingCards ul.table li:nth-child(1)  { left: 0; }
-.playingCards ul.table li:nth-child(2)  { left: 3.5em; }
-.playingCards ul.table li:nth-child(3)  { left: 7em; }
-.playingCards ul.table li:nth-child(4)  { left: 10.5em; }
-.playingCards ul.table li:nth-child(5)  { left: 14em; }
+.playingCards ul.table li:nth-child(2)  { left: 3.7em; }
+.playingCards ul.table li:nth-child(3)  { left: 7.4em; }
+.playingCards ul.table li:nth-child(4)  { left: 11.1em; }
+.playingCards ul.table li:nth-child(5)  { left: 14.8em; }
