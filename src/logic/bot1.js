@@ -29,7 +29,7 @@ function bot1(hand, knownTable) {
     console.log(symbolify(hand), winrate);
     if (winrate >= 0.50) {
         return Actions.RAISE;
-    } else if (winrate >= 0.3) {
+    } else if (winrate >= 0.25) {
         return Actions.LIMP;
     } else {
         return Actions.FOLD;
