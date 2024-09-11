@@ -25,7 +25,6 @@ function bot1(hand, knownTable) {
     }
 
     let winrate = won / kIterations;
-    console.log("Winrate:", winrate);
     if (winrate >= 0.6) {
         return Actions.RAISE;
     } else if (winrate >= 0.3) {
