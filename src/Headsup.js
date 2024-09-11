@@ -17,7 +17,7 @@ export default function Headsup() {
   let [folded, setFolded] = useState(false);
   let [botFolded, setBotFolded] = useState(false);
   let [color, setColor] = useState("white");
-  let [text, setText] = useState("");
+  let [text, setText] = useState("?");
 
   useEffect(() => {
     if (!done()) { return; }
@@ -77,7 +77,7 @@ export default function Headsup() {
     setBotFolded(false);
     setCards(new Deck().deal(9));
     setColor("white");
-    setText("default");
+    setText("?");
   }
 
   function botAction() {
