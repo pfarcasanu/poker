@@ -1,3 +1,5 @@
+import { Range } from "./utils.js";
+
 let suits = ['hearts', 'diams', 'clubs', 'spades'];
 
 let ranks = ['a', 'k', 'q', 'j', '10', '9', '8', '7', '6', '5', '4', '3', '2'];
@@ -34,8 +36,7 @@ export default class Deck {
     }
 
     deal(count) {
-        let range = Array.from(Array(count).keys());
-        return range.map(() => this.draw());
+        return Range(count).map(() => this.draw());
     }
 
     remove(cards) {

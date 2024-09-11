@@ -7,7 +7,7 @@ const Actions = Object.freeze({
     RAISE: 2
 });
 
-const kIterations = 200;
+const kIterations = 100;
 
 function bot1(hand, knownTable) {
     let knownCards = [...hand, ...knownTable];
@@ -25,9 +25,9 @@ function bot1(hand, knownTable) {
     }
 
     let winrate = won / kIterations;
-    if (winrate >= 0.6) {
+    if (winrate >= 0.51) {
         return Actions.RAISE;
-    } else if (winrate >= 0.3) {
+    } else if (winrate >= 0.4) {
         return Actions.LIMP;
     } else {
         return Actions.FOLD;
