@@ -77,7 +77,7 @@ export default function Headsup() {
     setBotFolded(false);
     setCards(new Deck().deal(9));
     setColor("white");
-    setText("");
+    setText("default");
   }
 
   function botAction() {
