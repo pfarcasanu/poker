@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { parseResult, getWinners } from './logic/hand.js';
+import { bot1, Actions } from './logic/bot1.js';
 import Card from './Card.js';
 import Deck from './logic/deck.js';
 
@@ -14,33 +15,39 @@ export default function Headsup() {
   let [bet, setBet] = useState(1);
   let [phase, setPhase] = useState(0);
   let [folded, setFolded] = useState(false);
+  let [botFolded, setBotFolded] = useState(false);
   let [color, setColor] = useState("white");
-  let [text, setText] = useState("﹖");
+  let [text, setText] = useState("");
 
   useEffect(() => {
     if (!done()) { return; }
     let res = getResult();
     if (res === 1) {
-        setMoney(money + 2 * bet);
+        setMoney(money + bet);
         setColor("green");
     } else if (res === -1) {
         setMoney(money - bet);
         setColor("red");
     } else {
-        setMoney(money + bet);
         setColor("white");
     }
-  }, [phase, folded]);
+  }, [phase, folded, botFolded]);
 
   function fold() {
     if (done()) {
         return;
     }
     setFolded(true);
+    setText("You folded.");
   }
 
   function limp() {
     if (done()) {
+        return;
+    }
+    if (botAction() < Actions.LIMP) {
+        setBotFolded(true);
+        setText("You limped, bot folded.");
         return;
     }
     setBet(bet + 1);
@@ -49,6 +56,11 @@ export default function Headsup() {
 
   function raise() {
     if (done()) {
+        return;
+    }
+    if (botAction() < Actions.RAISE) {
+        setBotFolded(true);
+        setText("You raised, bot folded.");
         return;
     }
     setBet(bet + 5);
@@ -62,17 +74,41 @@ export default function Headsup() {
     setBet(1);
     setPhase(0);
     setFolded(false);
+    setBotFolded(false);
     setCards(new Deck().deal(9));
     setColor("white");
-    setText("$");
+    setText("");
+  }
+
+  function botAction() {
+    return bot1(botCards(), knownTable());
+  }
+
+  function botCards() {
+    return cards.slice(7, 9);
+  }
+
+  function knownTable() {
+    let table = [];
+    if (phase >= 1) {
+      table = table.concat(cards.slice(0, 3));
+    }
+    if (phase >= 2) {
+      table.push(cards[3]);
+    }
+    if (phase >= 3) {
+      table.push(cards[4]);
+    }
+    return table;
   }
 
   function done() {
-    return phase === 4 || folded;
+    return phase === 4 || folded || botFolded;
   }
 
   function getResult() {
     if (folded) { return -1; }
+    if (botFolded) { return 1; }
     let cards1 = cards.slice(5, 7);
     let cards2 = cards.slice(7, 9);
     let cards3 = cards.slice(0, 5);
@@ -93,11 +129,10 @@ export default function Headsup() {
       <h3 className="title">Heads Up</h3>
       <div className="playingCards">
         <ul className="table">
-          {phase >= 1 ? <li><Card {...cards[0]} /></li> : <li><div className="card back">*</div></li>}
-          {phase >= 1 ? <li><Card {...cards[1]} /></li> : <li><div className="card back">*</div></li>}
-          {phase >= 1 ? <li><Card {...cards[2]} /></li> : <li><div className="card back">*</div></li>}
-          {phase >= 2 ? <li><Card {...cards[3]} /></li> : null}
-          {phase >= 3 ? <li><Card {...cards[4]} /></li> : null}
+          {phase === 0 ? <li><div className="card back">*</div></li> : null}
+          {phase === 0 ? <li><div className="card back">*</div></li> : null}
+          {phase === 0 ? <li><div className="card back">*</div></li> : null}
+          {phase > 0 ? knownTable().map((card, i) => <li key={i}><Card {...card} /></li>) : null}
         </ul>
       </div>
       <div className="playingCards" style={{marginTop: "-0.5em"}}>
@@ -105,15 +140,15 @@ export default function Headsup() {
           <li><Card {...cards[5]} /></li>
           <li><Card {...cards[6]} /></li>
           {
-            phase === 4 ? <li><Card {...cards[7]} /></li> : <li><div className="card back">*</div></li>
-          }
-          {
-            phase === 4 ? <li><Card {...cards[8]} /></li> : <li><div className="card back">*</div></li>
+            botCards().map((card, i) => phase === 4
+            ? <li key={i}><Card {...card} /></li>
+            : <li key={i}><div className="card back">*</div></li>
+            )
           }
         </ul>
       </div>
-      <h4 style={{color: phase === 4 ? "#aaa" : "black", marginTop: "-2em", textAlign: 'center'}}>
-        {phase === 4 ? text : "Hand result."}
+      <h4 style={{color: done() ? "#aaa" : "black", marginTop: "-2em", textAlign: 'center'}}>
+        {done() ? text : "Hand result."}
       </h4>
       <ul>
         <li><Button color="gray" onClick={fold} disabled={done()}>Fold</Button></li>

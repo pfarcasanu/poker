@@ -20,4 +20,4 @@ function getWinners(parsedHands) {
   return Hand.winners(parsedHands);
 }
 
-export { parseResult, getWinners };
+export { symbolify, parseResult, getWinners };

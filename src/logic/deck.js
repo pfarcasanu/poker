@@ -37,6 +37,12 @@ export default class Deck {
         let range = Array.from(Array(count).keys());
         return range.map(() => this.draw());
     }
+
+    remove(cards) {
+        let equals = (card1, card2) => card1.rank === card2.rank && card1.suit === card2.suit;
+        this.cards = this.cards.filter(card1 => !cards.some(card2 => equals(card1, card2)));
+        return this;
+    }
 }
 
 export { getIndexes, getSuits };
