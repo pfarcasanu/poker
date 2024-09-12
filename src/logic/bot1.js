@@ -21,16 +21,12 @@ function bot1(hand, knownTable) {
 
 
     let winrate = won / kIterations;
-    console.log("Bot1()")
-    console.log(" * ", symbolify(hand), winrate);
+    console.log(symbolify(hand), winrate);
     if (winrate >= 0.51) {
-        console.log("* ", Actions.Raise);
         return Actions.Raise;
     } else if (winrate >= 0.3) {
-        console.log("LIMP");
         return Actions.Limp;
     }
-    console.log("FOLD");
     return Actions.Fold;
 }
 
