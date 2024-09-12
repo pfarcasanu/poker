@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
+import { bot1 } from './logic/bot1.js';
 import { parseResult, getWinners } from './logic/hand.js';
-import { bot1, Actions } from './logic/bot1.js';
+import { Actions, Phase } from './logic/texasholdem.js';
 import Card from './Card.js';
 import Deck from './logic/deck.js';
 
@@ -45,7 +46,7 @@ export default function Headsup() {
     if (done()) {
         return;
     }
-    if (botAction() < Actions.LIMP) {
+    if (getBotAction() < Actions.Limp) {
         setBotFolded(true);
         setText("You limped, bot folded.");
         return;
@@ -58,7 +59,7 @@ export default function Headsup() {
     if (done()) {
         return;
     }
-    if (botAction() < Actions.RAISE) {
+    if (getBotAction() < Actions.Raise) {
         setBotFolded(true);
         setText("You raised, bot folded.");
         return;
@@ -72,7 +73,7 @@ export default function Headsup() {
         return;
     }
     setBet(1);
-    setPhase(0);
+    setPhase(Phase.Preflop);
     setFolded(false);
     setBotFolded(false);
     setCards(new Deck().deal(9));
@@ -80,30 +81,30 @@ export default function Headsup() {
     setText("?");
   }
 
-  function botAction() {
-    return bot1(botCards(), knownTable());
+  function getBotAction() {
+    return bot1(getBotCards(), getKnownTable(), phase);
   }
 
-  function botCards() {
+  function getBotCards() {
     return cards.slice(7, 9);
   }
 
-  function knownTable() {
+  function getKnownTable() {
     let table = [];
-    if (phase >= 1) {
+    if (phase >= Phase.Flop) {
       table = table.concat(cards.slice(0, 3));
     }
-    if (phase >= 2) {
+    if (phase >= Phase.Turn) {
       table.push(cards[3]);
     }
-    if (phase >= 3) {
+    if (phase >= Phase.River) {
       table.push(cards[4]);
     }
     return table;
   }
 
   function done() {
-    return phase === 4 || folded || botFolded;
+    return phase === Phase.Showdown || folded || botFolded;
   }
 
   function getResult() {
@@ -129,10 +130,12 @@ export default function Headsup() {
       <h3 className="title">Heads Up</h3>
       <div className="playingCards">
         <ul className="table">
-          {phase === 0 ? <li><div className="card back">*</div></li> : null}
-          {phase === 0 ? <li><div className="card back">*</div></li> : null}
-          {phase === 0 ? <li><div className="card back">*</div></li> : null}
-          {phase > 0 ? knownTable().map((card, i) => <li key={i}><Card {...card} /></li>) : null}
+          {phase === Phase.Preflop ? <li><div className="card back">*</div></li> : null}
+          {phase === Phase.Preflop ? <li><div className="card back">*</div></li> : null}
+          {phase === Phase.Preflop ? <li><div className="card back">*</div></li> : null}
+          {phase > Phase.Preflop
+          ? getKnownTable().map((card, i) => <li key={i}><Card {...card} /></li>)
+          : null}
         </ul>
       </div>
       <div className="playingCards" style={{marginTop: "-0.5em"}}>
@@ -140,7 +143,7 @@ export default function Headsup() {
           <li><Card {...cards[5]} /></li>
           <li><Card {...cards[6]} /></li>
           {
-            botCards().map((card, i) => phase === 4
+            getBotCards().map((card, i) => phase === Phase.Showdown
             ? <li key={i}><Card {...card} /></li>
             : <li key={i}><div className="card back">*</div></li>
             )

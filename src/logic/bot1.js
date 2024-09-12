@@ -1,15 +1,10 @@
 import Deck from './deck.js';
 import { parseResult, getWinners, symbolify } from './hand.js';
-
-const Actions = Object.freeze({
-    FOLD: 0,
-    LIMP: 1,
-    RAISE: 2
-});
+import { Actions, Phase } from './texasholdem.js';
 
 const kIterations = 100;
 
-function bot1(hand, knownTable) {
+function bot1(hand, knownTable, phase) {
     let knownCards = [...hand, ...knownTable];
     let won = 0;
 
