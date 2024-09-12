@@ -1,10 +1,10 @@
 import Deck from './deck.js';
 import { parseResult, getWinners, symbolify } from './hand.js';
-import { Actions, Phase } from './texasholdem.js';
+import { Actions } from './texasholdem.js';
 
 const kIterations = 100;
 
-function bot1(hand, knownTable, phase) {
+function bot1(hand, knownTable) {
     let knownCards = [...hand, ...knownTable];
     let won = 0;
 
@@ -21,14 +21,17 @@ function bot1(hand, knownTable, phase) {
 
 
     let winrate = won / kIterations;
-    console.log(symbolify(hand), winrate);
+    console.log("Bot1()")
+    console.log(" * ", symbolify(hand), winrate);
     if (winrate >= 0.50) {
-        return Actions.RAISE;
+        console.log("* ", Actions.Raise);
+        return Actions.Raise;
     } else if (winrate >= 0.25) {
-        return Actions.LIMP;
-    } else {
-        return Actions.FOLD;
+        console.log("LIMP");
+        return Actions.Limp;
     }
+    console.log("FOLD");
+    return Actions.Fold;
 }
 
 export { bot1, Actions };

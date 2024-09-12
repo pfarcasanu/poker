@@ -82,7 +82,7 @@ export default function Headsup() {
   }
 
   function getBotAction() {
-    return bot1(getBotCards(), getKnownTable(), phase);
+    return bot1(getBotCards(), getKnownTable());
   }
 
   function getBotCards() {
